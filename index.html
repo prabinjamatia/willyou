@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me?</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="header_text">Would you wanna go out with me?</h1>
+        </div>
+        <div class="gif_container">
+            <img src="shy.gif" alt="shy">
+        </div>
+        <div class="buttons">
+            <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+            <button class="btn" id="noButton" onmouseover="moveButton()" onclick="growYesButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let clickCount = 0;
+
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        function moveButton() {
+            const noButton = document.getElementById('noButton');
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        function growYesButton() {
+            const yesButton = document.getElementById('yesButton');
+            clickCount++;
+
+            // Increase the size of the "Yes" button
+            const currentWidth = parseFloat(window.getComputedStyle(yesButton).width);
+            const currentHeight = parseFloat(window.getComputedStyle(yesButton).height);
+            const newWidth = currentWidth * 1.5; // Increase width by 50%
+            const newHeight = currentHeight * 1.5; // Increase height by 50%
+
+            yesButton.style.width = `${newWidth}px`;
+            yesButton.style.height = `${newHeight}px`;
+
+            // Stop growing after 5 clicks
+            if (clickCount >= 5) {
+                yesButton.style.width = "100%";
+                yesButton.style.height = "100%";
+                yesButton.style.fontSize = "40px";
+                yesButton.style.borderRadius = "0";
+                yesButton.innerHTML = "I knew you'd say YES! 😊";
+                document.getElementById('noButton').style.display = "none"; // Hide the "No" button
+            }
+        }
+    </script>
+</body>
+</html>
