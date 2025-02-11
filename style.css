@@ -3,9 +3,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     background-color: #F4C2C2;
-    overflow: hidden; /* Prevent scrolling when the button grows */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -14,34 +15,37 @@ body {
 
 .header_text {
     font-family: 'Nunito';
-    font-size: 6vw; /* Responsive font size */
+    font-size: 40px;
     font-weight: bold;
     color: white;
+    text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.gif_container img {
-    max-width: 100%;
-    height: auto;
+.gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Space between buttons */
-    margin-top: 20px;
+    gap: 20px;
 }
 
 .btn {
     color: white;
     padding: 15px 32px;
     text-align: center;
+    display: inline-block;
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, font-size 0.3s ease;
 }
 
 #yesButton {
@@ -50,13 +54,11 @@ body {
 
 #noButton {
     background-color: #FF0000; /* Red */
-    position: absolute;
 }
 
-/* Responsive design for smaller screens */
 @media only screen and (max-width: 600px) {
     .header_text {
-        font-size: 10vw; /* Larger font size for small screens */
+        font-size: 30px;
     }
 
     .btn {
